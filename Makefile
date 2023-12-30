@@ -1,11 +1,11 @@
 # Define the variables for the compiler and the flags
-CC = gcc
-CFLAGS = -Wall -g -std=c99 -pedantic
+CC ?= gcc
+CFLAGS += -Wall -g -std=c99 -pedantic
 
 # Define the libraries to link
 LIBS = -lsystemd -lbsd
 
-prefix = /usr/local
+prefix ?= /usr/local
 exec_prefix = $(prefix)
 bindir = $(exec_prefix)/bin
 dexpath = $(bindir)/dexedrine
