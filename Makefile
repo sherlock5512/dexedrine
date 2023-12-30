@@ -30,5 +30,7 @@ clean:
 # Define how to install
 
 install: all
+	mkdir -p $(DESTDIR)$(bindir)
+	mkdir -p $(DESTDIR)/usr/lib/systemd/user
 	install dexedrine $(DESTDIR)$(dexpath)
-	install dexedrine.service /usr/lib/systemd/user/dexedrine.service
+	install dexedrine.service $(DESTDIR)/usr/lib/systemd/user/dexedrine.service
