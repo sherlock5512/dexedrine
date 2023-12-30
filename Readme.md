@@ -7,7 +7,7 @@
 
 ## How to use
 - Run `make`
-- Move the binary to somewhere in your PATH
+- Move the binary to somewhere in your PATH (or run `make install`)
 - Run `dexedrine`
     - Your system will now be blocked from suspending, going idle, and it
     will ignore the lid switch
@@ -18,8 +18,10 @@
         - Send `SIGINT` to `dexedrine`.
 
 ### Advanced usage
-It is also possible to run `dexedrine` as a user `systemd` unit.
-TODO: WRITE THE UNIT FILE
+You can also run `dexedrine` as a `systemd` user service
+```bash
+systemctl --user start dexedrine.service
+```
 
 
 ## Backstory
