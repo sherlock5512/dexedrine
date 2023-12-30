@@ -24,7 +24,8 @@ dexedrine.service: dexedrine.service.template
 
 # Define the rule to clean the generated files
 clean:
-	rm dexedrine
+	-rm -f dexedrine
+	-rm -f dexedrine.service
 
 # Define how to install
 
