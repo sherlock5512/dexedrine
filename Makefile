@@ -13,11 +13,14 @@ dexpath = $(bindir)/dexedrine
 .PHONY: all clean install
 
 # Define the default rule to build the program
-all: dexedrine
+all: dexedrine dexedrine.service
 
 # Define the rule to compile the source file
 dexedrine: dexedrine.c dexedrine.h
 	$(CC) $(CFLAGS) dexedrine.c -o dexedrine $(LIBS)
+
+dexedrine.service: dexedrine.service.template
+	sed --posix "s@%DEXPATH%@$(dexpath)@" dexedrine.service.template > dexedrine.service
 
 # Define the rule to clean the generated files
 clean:
@@ -25,5 +28,6 @@ clean:
 
 # Define how to install
 
-install:
+install: all
 	install dexedrine $(DESTDIR)$(dexpath)
+	install dexedrine.service /usr/lib/systemd/user/dexedrine.service

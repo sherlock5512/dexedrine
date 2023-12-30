@@ -1,0 +1,7 @@
+[Unit]
+Description=Dexedrine
+
+[Service]
+Type=simple
+ExecStart=%DEXPATH%
+KillSignal=SIGINT
