@@ -1,21 +1,29 @@
 # Define the variables for the compiler and the flags
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -std=c99 -pedantic
 
 # Define the libraries to link
 LIBS = -lsystemd -lbsd
 
-# Define the source file and the output binary
-BIN = dexedrine
-SRC := $(BIN).c
+prefix = /usr/local
+exec_prefix = $(prefix)
+bindir = $(exec_prefix)/bin
+dexpath = $(bindir)/dexedrine
+
+.PHONY: all clean install
 
 # Define the default rule to build the program
-all: $(BIN)
+all: dexedrine
 
 # Define the rule to compile the source file
-$(BIN): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(BIN) $(LIBS)
+dexedrine: dexedrine.c dexedrine.h
+	$(CC) $(CFLAGS) dexedrine.c -o dexedrine $(LIBS)
 
 # Define the rule to clean the generated files
 clean:
-	rm -f $(BIN)
+	rm dexedrine
+
+# Define how to install
+
+install:
+	install dexedrine $(DESTDIR)$(dexpath)

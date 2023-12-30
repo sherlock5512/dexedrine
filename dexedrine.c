@@ -1,15 +1,4 @@
-#include <bsd/libutil.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <systemd/sd-bus.h>
-#include <unistd.h>
-#include <linux/limits.h>
-
-void handleSigs(int sig);
-
-#define _cleanup_(f) __attribute__((cleanup(f)))
+#include "dexedrine.h"
 
 int main(int argc, char *argv[]) {
 	_cleanup_(sd_bus_flush_close_unrefp) sd_bus *bus = NULL;
